@@ -1,24 +1,21 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { getLoginUserUsingGet } from '@/api/userController.ts'
 
+/**
+ * 存储登录用户信息的状态
+ */
 export const useLoginUserStore = defineStore('loginUser', () => {
-  const loginUser = ref<any>({
+  const loginUser = ref<API.LoginUserVO>({
     userName: '未登录',
   })
 
-  // async function fetchLoginUser() {
-  //   // todo 由于后端还没提供接口，暂时注释
-  //   // const res = await getCurrentUser();
-  //   // if (res.data.code === 0 && res.data.data) {
-  //   //   loginUser.value = res.data.data;
-  //   // }
-  // }
-
   async function fetchLoginUser() {
-    // 测试用户登录，3 秒后登录
-    setTimeout(() => {
-      loginUser.value = { userName: '测试用户', id: 1 }
-    }, 3000)
+    // 从后端获取登录用户信息
+    const response = await getLoginUserUsingGet()
+    if (response.data.code === 0 && response.data.data) {
+      loginUser.value = response.data.data
+    }
   }
 
   // 设置登录用户
