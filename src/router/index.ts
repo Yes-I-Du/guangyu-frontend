@@ -3,6 +3,9 @@ import HomePage from '@/pages/HomePage.vue'
 import UserLoginPage from '@/pages/user/UserLoginPage.vue'
 import UserRegisterPage from '@/pages/user/UserRegisterPage.vue'
 import UserManagePage from '@/pages/admin/UserManagePage.vue'
+import AddPicturePage from '@/pages/picture/AddPicturePage.vue'
+import PictureDetailPage from '@/pages/picture/PictureDetailPage.vue'
+import PictureManagePage from '@/pages/admin/PictureManagePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +29,22 @@ const router = createRouter({
       path: '/admin/UserManage',
       name: '用户管理',
       component: UserManagePage,
+    },
+    {
+      path: '/add_picture',
+      name: '图片创建',
+      component: AddPicturePage,
+    },
+    {
+      path: '/picture/:id',
+      name: '图片详情',
+      component: PictureDetailPage,
+      props: true,
+    },
+    {
+      path: '/admin/PictureManage',
+      name: '图片管理',
+      component: PictureManagePage,
     },
     {
       path: '/about',
