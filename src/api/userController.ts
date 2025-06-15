@@ -51,10 +51,10 @@ export async function getLoginUserUsingGet(options?: { [key: string]: any }) {
   })
 }
 
-/** getUserVO GET /api/user/get/vo/${param0} */
-export async function getUserVoUsingGet(
+/** getUserVOById GET /api/user/get/vo/${param0} */
+export async function getUserVoByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getUserVOUsingGETParams,
+  params: API.getUserVOByIdUsingGETParams,
   options?: { [key: string]: any }
 ) {
   const { id: param0, ...queryParams } = params
@@ -120,7 +120,7 @@ export async function userRegisterUsingPost(
 
 /** updateUser PUT /api/user/update */
 export async function updateUserUsingPut(
-  body: API.UserQueryRequest,
+  body: API.UserUpdateRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>('/api/user/update', {
